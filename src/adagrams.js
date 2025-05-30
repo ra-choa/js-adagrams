@@ -35,14 +35,11 @@ export const drawLetters = () => {
     if (randomValue <= weight) {
       selectedLetters.push(letter);
       
-      // remove a count from the letter pool letter
       letterPoolCopy[letter] = letterPoolCopy[letter] - 1;
-      // if (letter count ==0)
-      // delete letterPoolCopy[letter] as whole
       if (letterPoolCopy[letter] === 0) {
-        delete letterPool[letter];
+        delete letterPoolCopy[letter];
       }
-      
+
         break;
       }
     }
@@ -51,7 +48,25 @@ export const drawLetters = () => {
 };
 
 export const usesAvailableLetters = (input, lettersInHand) => {
-  // Implement this method for wave 2
+  input = input.toUpperCase();
+  const letterBankCount = {}
+
+  for (const letter of lettersInHand) {
+    if (!(letter in letterBankCount)) {
+      letterBankCount[letter] = 1;
+    } else {
+      letterBankCount[letter] += 1;
+    }
+  }
+
+  for(const char of input) {
+    if (letterBankCount[char] > 0) {
+      letterBankCount[char] = letterBankCount[char] - 1;
+    } else {
+      return false;
+    }
+  }
+  return true; 
 };
 
 export const scoreWord = (word) => {
