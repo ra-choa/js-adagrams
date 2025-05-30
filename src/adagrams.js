@@ -1,16 +1,9 @@
-// import { of } from "core-js/core/array";
-
 export const drawLetters = () => {
   const letterPool = 
     {A:9, B:2, C:2, D:4, E:12, F:2, G:3, 
     H:2, I:9, J:1, K:1, L:4, M:2, N:6, O:8, P:2, 
     Q:1, R:6, S:4, T:6, U:4, V:2, W:2, X:1, Y:2, Z:1
   };
-
-  // *** visual aid ONLY: this will update with function below if letterPool changes:
-  // cumulativeWeights = {A:9, B:11, C:13, D:17, E:29, F:31, G:34,
-  //   H:36, I:45, J:46, K:47, L:51, M:53, N:59, O:67, P:69,
-  //   Q:70, R:76, S:80, T:86, U:90, V:92, W:94, X:95, Y:97, Z:98}
 
   const computeCumulativeWeights = (letterPool) => {
     const cumulativeWeights = {};
